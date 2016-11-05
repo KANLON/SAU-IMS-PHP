@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Created by PhpStorm.
  * User: APone
@@ -10,6 +9,7 @@
  * 用户抽象类，一切其他权限用户类必须继承该类
  */
 require "Database.php";
+
 abstract class BaseUser
 {
     protected $instance;//数据库接口
@@ -25,17 +25,17 @@ abstract class BaseUser
     /*
      * 获得数据库接口
      */
-    protected function getConn()
+    protected function getInstance()
     {
-        return $this->instance->getConn();
+        return $this->instance;
     }
 
     /*
      * 登陆
      */
-    final public function login($userName, $password)
+    public function login($userName, $password)
     {
-        $link = $this->getConn()->prepare("call login(?,?)");
+        $link = $this->getInstance()->getConn()->prepare("call login(?,?)");
         $link->bindParam(1, $userName);
         $link->bindParam(2, $password);
         if (!$link->execute()) {
@@ -49,26 +49,26 @@ abstract class BaseUser
     /*
      * 注册
      */
-    //abstract public function register($content);
+    abstract public function register($content);
 
     /*
      * 查看资料
      */
-    //abstract public function showInfo($usreName);
+    abstract public function showInfo($usreName);
 
     /*
      * 修改资料
      */
-    //abstract public function editInfo($userName, $content);
+    abstract public function editInfo($userName, $content);
 
     /*
      * 修改密码
      */
-   // abstract public function editPassword($userName, $oldPassword, $newPassword);
+    abstract public function editPassword($userName, $oldPassword, $newPassword);
 
     /*
      * 注销
      */
-    //abstract public function logout($userName);
+    abstract public function logout($userName);
 
 }

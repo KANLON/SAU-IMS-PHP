@@ -1,15 +1,11 @@
 <?php
-
 /**
  * Created by PhpStorm.
  * User: APone
  * Date: 2016/10/31
+ * 单例工厂模式，加入类名即可返回对象，类放在model文件夹
  * Time: 23:52
  */
-/*
- * 单例工厂模式，加入类名即可返回对象，泪放在model文件夹
- */
-
 class UserFactory
 {
     private static $classGroup = array();
@@ -20,8 +16,6 @@ class UserFactory
 
         if (!file_exists($classFIle)) {//检测modei文件夹是否存在该类
             throw new ClassNotFoundException("can't found this class");//无则抛出异常
-        }else{
-            include_once "$classFIle";
         }
 
         if (!isset(self::$classGroup[$name]) || !(self::$classGroup[$name] instanceof $name)) {//检测是否已存在该类实例或不对货

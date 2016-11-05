@@ -6,8 +6,6 @@
  * Date: 2016/10/29
  * Time: 11:07
  */
-require "../model/User.php";
-require "../../framework/UserFactory.php";
 
 if ($_POST) {//是否有post
     if (empty($_POST['userName']) || empty($_POST['password'])) {
@@ -15,13 +13,8 @@ if ($_POST) {//是否有post
         die();
     }
 
-    $userName = htmlspecialchars(trim($_POST['userName'], " "));
+    $userName = htmlspecialchars(trim($_POST['userName'], " "));//获得用户信息
     $password = htmlspecialchars(trim($_POST['password'], " "));
 
-    $user-UserFactory::factory("User");
-    if($user->login($userName,$password)){
-        echo "success";
-    }else{
-        echo "fail";
-    }
+
 }

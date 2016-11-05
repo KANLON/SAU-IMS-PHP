@@ -1,5 +1,4 @@
 <?php
-define('ROOT_PATH',dirname(__FILE__));
 /**
  * Created by PhpStorm.
  * 数据库操作类
@@ -11,7 +10,7 @@ class Database
 {
     private static $instance;//数据库类接口
     private $link;//数据库接口
-    private $iniFileName ="/config/dbConfig.ini";//配置文件地址
+    private $iniFileName ="../config/dbConfig.ini";//配置文件地址
 
     const ADMIN = 0;
     const USER = 1;
@@ -36,10 +35,6 @@ class Database
      */
     private function loadConfig()
     {
-
-        echo ROOT_PATH;
-
-
         if (file_exists($this->iniFileName)) {
             $info = parse_ini_file($this->iniFileName, true);
             if (empty($info)) {
