@@ -14,23 +14,31 @@
 }
 
 html{
-	height: 1080px;
-	width: 1920px;
+	max-height: 930px;
+	width: 100%;
 	font-size: 62.5%;
 	font-family: Microsoft Yahei;
+	overflow:hidden
 }
 
 /*页眉部分*/
 
 header{
-	height: 100px;
+	height: 80px;
 	background-color: #fff;
 }
 
+.logo {
+	left: 200px;
+	top: 10px;
+	width: 60px;
+	height: 60px;
+}
+
 #header{
-	top: 20%;
-	padding-left: 5%;
-	font-size: 4em;
+	top: -55%;
+	left: 270px;
+	font-size: 3em;
 	font-weight: lighter;
 	color: rgba(102,102,102,1);
 }
@@ -38,24 +46,24 @@ header{
 /*主体部分*/
 
 main{
-	height: 830px;
+	height: 746px;
 	background-image: url(../img/background.png);
 }
 
-.container{
-	left: 1100px;
-	top: 140px;
-	height: 550px;
-	width: 450px;
+.formContainer{
+	left: 60.26%;
+	top: 17%;
+	height: 450px;
+	width: 355px;
 	padding-left: 50px;
 	border-radius: 10px;
-	background-color: rgba(255,255,255,0.5);
+	background-color: rgba(255,255,255,0.7);
 }
 
 /*页脚部分*/
 
 footer{
-	height: 150px;
+	height: 100px;
 	text-align: center;
 	background-color: rgba(170,170,170,1);
 }
@@ -70,43 +78,43 @@ footer{
 */
 
 .login{
-	top: 45px;
+	top: 25px;
 	font-size: 3em;
 	color: rgba(51,51,51,1);
 }
 
-form{
-	top: 65px;
+.tips {
+	top: 40px;
+	font-size: 1.5em;
+	color: #f00;
 }
 
-form:before{/*此处留空，用来警告“请输入账号密码”*/
-	content: attr(data-attr) "foo";
-	font-size: 1.8em;
-	color: #f33;
+form{
+	top: 50px;
 }
 
 [type="text"]{/*不用id了，直接用属性选择器，把id的作用留给js*/
 	top: 15px;
-	width: 274px;
-	height: 70px;
+	width: 224px;
+	height: 60px;
 	padding-left: 76px;
-	font-size: 5em;
+	font-size: 1.8em;
 	background: url(../img/账号.png) no-repeat left center;
-	border: solid 1px;
+	border: solid 2px #858b98;
 }
 
 [type="password"]{/*此处不适用top，因为计算top是从上个输入框的中部开始计算的*/
-	margin-top: 40px;
-	width: 274px;
-	height: 70px;
+	margin-top: 30px;
+	width: 224px;
+	height: 60px;
 	padding-left: 76px;
-	font-size: 5em;
+	font-size: 1.8em;
 	background: url(../img/密码.png)  no-repeat left center;
-	border: solid 1px;
+	border: solid 2px #858b98;
 }
 
 .row{
-	top: 35px;
+	top: 30px;
 }
 
 [type="checkbox"]{
@@ -123,7 +131,7 @@ form:before{/*此处留空，用来警告“请输入账号密码”*/
 
 .forget{
 	float: right;
-	padding-right: 95px;
+	padding-right: 55px;
 	font-size: 2em;
 }
 
@@ -133,9 +141,9 @@ form:before{/*此处留空，用来警告“请输入账号密码”*/
 	text-decoration: none;
 }
 
-[type="submit"]{
-	top: 80px;
-	width: 200px;
+[type="button"]{
+	top: 60px;
+	width: 300px;
 	height: 50px;
 	background-color: rgba(50,177,108,1);
 	color: white;
@@ -145,11 +153,11 @@ form:before{/*此处留空，用来警告“请输入账号密码”*/
 	font-family: Microsoft Yahei;
 }
 
-[type="submit"]:hover{
+[type="button"]:hover{
 	background-color: rgba(0,113,48,1);
 }
 
-[type="submit"]:active{
+[type="button"]:active{
 	color: rgba(102,102,102,1);
 	background-color: #fff;
 }

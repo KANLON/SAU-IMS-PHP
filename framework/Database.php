@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * 数据库操作类
@@ -6,63 +7,51 @@
  * Date: 2016/10/29
  * Time: 15:42
  */
+
+if (!defined('HOST')) define('HOST', str_replace('\\', '/', dirname(__FILE__))."/../");//站点目录
+
 class Database
 {
-    private static $instance;//数据库类接口
-    private $link;//数据库接口
-    private $iniFileName ="../config/dbConfig.ini";//配置文件地址
-
-    /*
-     * 构造函数私有
+    /**
+     * @var string 配置文件地址
      */
-    private function Database()
-    {
-        $info = $this->loadConfig();
+    private static $iniFileName = HOST."config/dbConfig.ini";
 
-        $content = "$info[dbms]:host=$info[host];port=$info[port];dbname=$info[dbname];charset=$info[charset]";
-        try {
-            $this->link = new PDO($content, $info['username'], $info['password']);
-        } catch (PDOException $e) {
-            echo $e->getMessage();
-        }
-    }
-
-    /*
-     * 加载配置文件信息，返回数组类型
+    /**
+     * @var PDO 数据库接口
      */
-    private function loadConfig()
+    private static $instance;
+
+    /**
+     * 加载配置文件信息
+     * @return array
+     */
+    private static function loadConfig()
     {
-        if (file_exists($this->iniFileName)) {
-            $info = parse_ini_file($this->iniFileName, true);
-            if (empty($info)) {
-                echo "未完成数据库配置文件";
-                die();
-            }
-            return $info;
+        if (file_exists(self::$iniFileName)) {//配置文件是否存在
+            $info = parse_ini_file(self::$iniFileName, true);//读取文件信息
+            return $info;//返回信息组
         } else {
-            echo "数据库配置文件不存在";
-            die();
+            die("数据库配置文件不存在");
         }
     }
 
-    /*
-     *获得数据库类
+    /**
+     * 获得数据库接口
+     * @return PDO
      */
     public static function getInstance()
     {
-        if (self::$instance instanceof Database) {
-            return self::$instance;
-        } else {
-            return self::$instance = new Database();
+        if (!self::$instance instanceof PDO) {//如未实例化
+            $info = self::loadConfig();//加载配置文件
+            $content = "$info[dbms]:host=$info[host];port=$info[port];dbname=$info[dbname];charset=$info[charset]";//获取配置文件数据
+
+            try {
+                self::$instance = new PDO($content, $info['username'], $info['password']);//新实例化
+            } catch (PDOException $e) {
+                die("配置信息错误");
+            }
         }
+        return self::$instance;//返回接口
     }
-
-    /*
-     * 获得数据库连接
-     */
-    public function getConn(){
-        return $this->link;
-    }
-
 }
-

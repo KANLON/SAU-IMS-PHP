@@ -3,41 +3,34 @@
 /**
  * Created by PhpStorm.
  * User: APone
+ * 校社联管理员类
  * Date: 2016/11/6
  * Time: 0:47
  */
 
+if (!defined('HOST')) define('HOST', str_replace('\\', '/', dirname(__FILE__)) . "/../");//站点目录
 
-require "../framework/BaseUser.php";
+require_once HOST . "framework/BaseUser.php";
 
-class SauAdmin extends BaseUser//校社联管理员类
+class SauAdmin extends BaseUser
 {
-    /*
-     * 构造函数
-     */
-    public function __construct()
+    public function register($content)
     {
-        parent::__construct();//调用父类构造函数
-    }
-
-    /*
-     * 注册
-     */
-    public function register($content){
 
     }
 
-    /*
-     * 查看资料
-     */
-    public function showInfo($usreName){
+    public function showInfo($usreName)
+    {
 
     }
 
-    /*
-     * 修改资料
-     */
-    public function editInfo($userName, $content){
+    public function editInfo($userName, $content)
+    {
 
+    }
+
+    public function getName()
+    {
+        return "SauAdmin";
     }
 }

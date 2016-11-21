@@ -7,21 +7,23 @@
 </head>
 <body>
 	<header>
+		<img src="img/logo.png" alt="" class="logo rlt">
 		<h1 id="header" class="rlt">校社联·信息管理系统</h1>
 	</header>
 	<main>
-		<div class="container rlt">
-			<span class="login rlt">登录</span>
-			<form action="" class="rlt" method="post">
+		<div class="formContainer rlt">
+			<span class="login rlt">登录</span><br>
+			<span  class="tips rlt" id="tips"></span>
+			<form action=""  class="rlt" method="post">
 				<div class="settled">
-				<input type="text" id="user" class="rlt"  name="userName">
-				<input type="password" id="password" class="rlt"  name="password">
-				<div class="row rlt">
+				<input type="text" id="user" class="rlt" placeholder="账号|用户名" name="userName" autocomplete="off">
+				<input type="password" id="password" class="rlt" placeholder="密码" name="password">
+				<div class="row rlt" autocomplete="off">
 					<input type="checkbox" id="checkbox">
 					<span class="remember rlt">记住账号</span>
 					<a href="" class="forget">忘记密码</a>
 				</div>
-				<input type="submit" id="submit" class="rlt" value="登录">
+				<input type="button" id="submit" onclick="login()" class="rlt" value="登录">
 				</div>
 			</form>
 		</div>
@@ -29,7 +31,7 @@
 	<footer>
 		<p id="footer" class="rlt">&copy;2016-广金校社联</p>
 	</footer>
-	<script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+	<script src="./js/jquery-3.1.1.min.js"></script>
 	<script src="./js/login.js"></script>
 </body>
 </html>
