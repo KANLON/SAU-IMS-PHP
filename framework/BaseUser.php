@@ -32,15 +32,17 @@ abstract class BaseUser
      * 设置用户名
      * @param $userName string 用户名
      */
-    public function setUserName($userName){
-        $this->userName=$userName;
+    public function setUserName($userName)
+    {
+        $this->userName = $userName;
     }
 
     /**
      * 获取用户名
      * @return string 用户名
      */
-    public function getUserName(){
+    public function getUserName()
+    {
         return $this->userName;
     }
 
@@ -89,7 +91,7 @@ abstract class BaseUser
         $stmt = $conn->prepare($sql);
 
         $stmt->bindParam(1, $this->userName);
-        $stmt->bindParam(2,$password);
+        $stmt->bindParam(2, $password);
 
         $stmt->execute();
 
@@ -98,16 +100,15 @@ abstract class BaseUser
 
     /**
      * 获取用户key
-     * @param $userName string 用户名
      * @return string key
      */
-    public static function getKey($userName)
+    public function getKey()
     {
         $sql = "select `salt` from `user` where `username`=? ";
         $conn = Database::getInstance();//获取接口
         $stmt = $conn->prepare($sql);
 
-        $stmt->bindParam(1, $userName);//绑定参数
+        $stmt->bindParam(1, $this->userName);//绑定参数
         $stmt->execute();
 
         return $stmt->fetch(PDO::FETCH_ASSOC)['salt'];
@@ -155,7 +156,7 @@ abstract class BaseUser
      * 通过用户名获取邮箱
      * @return string 邮箱
      */
-    public function getMailByUserName()
+    public function getEmail()
     {
         $sql = "select `email` from `userInfo` where `username`=?";
         $conn = Database::getInstance();
@@ -165,6 +166,23 @@ abstract class BaseUser
         $stmt->execute();
 
         return $stmt->fetch(PDO::FETCH_ASSOC)['email'];
+    }
+
+
+    /**
+     * 该用户是否存在
+     * @return bool
+     */
+    public function isExits()
+    {
+        $sql = "select `username` from `user` where `username`=?";
+        $conn = Database::getInstance();
+        $stmt = $conn->prepare($sql);
+
+        $stmt->bindParam(1, $this->userName);
+        $stmt->execute();
+
+        return $stmt->rowCount() > 0 ? true : false;
     }
 
     /**

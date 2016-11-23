@@ -39,7 +39,6 @@ class ModelFactory
             return self::$classGroup[$name] = new $name();
         }
         return self::$classGroup[$name];//返回该实例
-
     }
 
     /**
