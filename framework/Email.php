@@ -7,16 +7,15 @@
  * Date: 2016/11/19
  * Time: 17:20
  */
-if (!defined('HOST')) define('HOST', str_replace('\\', '/', dirname(__FILE__))."/../");//站点目录
 
-require_once HOST . "framework/PHPMailer/PHPMailerAutoload.php";
+require_once FRAME_PATH."PHPMailer/PHPMailerAutoload.php";
 
 class Email
 {
     /**
      * @var string 配置文件地址
      */
-    private static $iniFileName = HOST . "config/mailConfig.ini";
+    private static $iniFileName =mailConfig;
 
     /**
      * @var PHPMailer 邮箱类

@@ -7,9 +7,7 @@
  * Time: 12:15
  */
 
-if (!defined('HOST')) define('HOST', str_replace('\\', '/', dirname(__FILE__)) . "/../");//站点目录
-
-require_once HOST . "framework/Database.php";
+require_once "./framework/Database.php";
 
 abstract class BaseUser
 {
@@ -19,6 +17,16 @@ abstract class BaseUser
     private $userName;
 
     /**
+     * @var int 用户id
+     */
+    private $id;
+
+    /**
+     * @var int 组织标识
+     */
+    private $clubId;
+
+    /**
      * 构造函数
      * BaseUser constructor.
      * @param $userName string 用户名
@@ -26,24 +34,6 @@ abstract class BaseUser
     public function __construct($userName = "")
     {
         $this->userName = $userName;
-    }
-
-    /**
-     * 设置用户名
-     * @param $userName string 用户名
-     */
-    public function setUserName($userName)
-    {
-        $this->userName = $userName;
-    }
-
-    /**
-     * 获取用户名
-     * @return string 用户名
-     */
-    public function getUserName()
-    {
-        return $this->userName;
     }
 
     /**
@@ -231,6 +221,59 @@ abstract class BaseUser
     public function getName()
     {
         return "BaseUser";
+    }
+
+    /**
+     * 设置用户名
+     * @param $userName string 用户名
+     */
+    public function setUserName($userName)
+    {
+        $this->userName = $userName;
+    }
+
+    /**
+     * 获取用户名
+     * @return string 用户名
+     */
+    public function getUserName()
+    {
+        return $this->userName;
+    }
+
+    /**
+     * 设置用户id
+     * @param $id int 用户id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * 获取用户id
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * 设置用户组织标识
+     * @param $clubId int
+     */
+    public function setClubId($clubId)
+    {
+        $this->clubId=$clubId;
+    }
+
+    /**获取用户组织标识
+     * @return int
+     */
+    public function getClubId()
+    {
+        return $this->clubId;
     }
 }
 

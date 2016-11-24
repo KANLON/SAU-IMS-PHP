@@ -7,9 +7,6 @@
  * Date: 2016/11/21
  * Time: 0:55
  */
-if (!defined('HOST')) define('HOST', str_replace('\\', '/', dirname(__FILE__)) . "/../");//站点目录
-
-require_once HOST . "framework/BaseUser.php";
 
 class ClubAdmin extends BaseUser
 {

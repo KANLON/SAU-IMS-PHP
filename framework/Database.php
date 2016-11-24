@@ -8,14 +8,12 @@
  * Time: 15:42
  */
 
-if (!defined('HOST')) define('HOST', str_replace('\\', '/', dirname(__FILE__))."/../");//站点目录
-
 class Database
 {
     /**
      * @var string 配置文件地址
      */
-    private static $iniFileName = HOST."config/dbConfig.ini";
+    private static $iniFileName = dbConfig;
 
     /**
      * @var PDO 数据库接口

@@ -7,10 +7,6 @@
  * Time: 23:52
  */
 
-if (!defined('HOST')) define('HOST', str_replace('\\', '/', dirname(__FILE__)) . "/../");//站点目录
-
-require_once HOST . "framework/BaseUser.php";
-
 class ModelFactory
 {
     /**
@@ -27,7 +23,7 @@ class ModelFactory
      */
     public static function factory($name)
     {
-        $classFile = HOST . "model/$name.php";
+        $classFile = MODEL_PATH."$name.php";
 
         if (!file_exists($classFile)) {//检测modei文件夹是否存在该类
             throw new ClassNotFoundException("can't found this class");//无则抛出异常
@@ -52,9 +48,11 @@ class ModelFactory
      */
     public static function adminFactory($userName)
     {
+        require_once FRAME_PATH."BaseUser.php";
+
         $right = BaseUser::getUserIdentify($userName)["right"];//获取权限标识
 
-        switch ($right) {//形成不同用户类
+        switch ($right) {//形成不同管理员类
             case 1:
                 $userType = "ClubAdmin";
                 break;
@@ -66,12 +64,12 @@ class ModelFactory
                 break;
         }
 
-        $classFile = HOST . "model/$userType.php";
+        $classFile = MODEL_PATH."$userType.php";
 
-        if (!file_exists($classFile)) {//检测modei文件夹是否存在该类
+        if (!file_exists($classFile)) {//检测model文件夹是否存在该类
             throw new ClassNotFoundException("can't found this class");//无则抛出异常
         } else {
-            include_once "$classFile";
+            require_once "$classFile";
         }
 
         return new $userType($userName);//返回该实例

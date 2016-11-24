@@ -7,9 +7,6 @@
  * Date: 2016/11/8
  * Time: 22:27
  */
-if (!defined('HOST')) define('HOST', str_replace('\\', '/', dirname(__FILE__)) . "/../");//站点目录
-
-require_once HOST."framework/ModelFactory.php";
 
 class PINCode
 {
