@@ -7,6 +7,7 @@
  * Date: 2016/11/19
  * Time: 17:20
  */
+defined("APP") or die("傻了吧我的弟...");
 
 require_once FRAME_PATH."PHPMailer/PHPMailerAutoload.php";
 

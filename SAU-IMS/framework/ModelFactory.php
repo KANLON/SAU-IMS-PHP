@@ -6,6 +6,7 @@
  * 单例工厂模式，加入类名即可返回对象，类放在model文件夹
  * Time: 23:52
  */
+defined("APP") or die("傻了吧我的弟...");
 
 class ModelFactory
 {

@@ -7,6 +7,7 @@
  * Date: 2016/11/21
  * Time: 0:55
  */
+defined("APP") or die("傻了吧我的弟...");
 
 class ClubAdmin extends BaseUser
 {

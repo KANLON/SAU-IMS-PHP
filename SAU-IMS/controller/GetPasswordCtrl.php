@@ -7,6 +7,8 @@
  * Date: 2016/10/29
  * Time: 11:08
  */
+defined("APP") or die("傻了吧我的弟...");
+
 class GetPasswordCtrl
 {
     public function exec()

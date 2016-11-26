@@ -8,6 +8,8 @@
  * Time: 15:42
  */
 
+defined("APP") or die("傻了吧我的弟...");
+
 class Database
 {
     /**
