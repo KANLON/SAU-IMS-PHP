@@ -26,9 +26,9 @@ function login() {
             }
         }
     }
-    xmlhttp.open("POST", "./index.php?c=LoginAdmin", true);
+    xmlhttp.open("POST", "./index.php?c=ForgetPass", true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xmlhttp.send("userName=" + userName.value + "&password=" + password.value);
+    xmlhttp.send("userName=" + userName.value);
 }
 
 document.getElementById("button").onclick=login;
