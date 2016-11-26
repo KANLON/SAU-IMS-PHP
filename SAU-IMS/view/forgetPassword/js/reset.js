@@ -33,4 +33,12 @@ function login() {
 
 document.getElementById("button").onclick=login;
 
-$("input").keydown(login);
+// $("input").keydown(login);
+
+$(document).ready(function(e) {
+  $(this).keydown(function (e){
+    if(e.which == "13") {
+      login();
+    }
+  })
+});
