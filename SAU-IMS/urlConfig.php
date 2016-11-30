@@ -18,7 +18,7 @@ define("FRAME_PATH","./framework/");//基础类路径
 
 //***************************网址虚拟路径**************************//
 
-define("__HOST__","http://localhost/SAU-IMS/");//根据需要修改SAU-IMS-N
+define("__HOST__","http://localhost/SAU-IMS/");//根据需要修改SAU-IMS
 
 //****************************配置文件路径*************************//
 

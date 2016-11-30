@@ -7,24 +7,20 @@
  * Time: 12:50
  */
 
-//*******************
-//c---->controller//控制类
-//a---->action//功能类
-//*******************
+define("APP", "SAU-IMS");//防止网址直接跳转,所有php和html必须存在
 
-define("APP", "SAU-IMS");//防止网址直接跳转,所有php必须存在
-
-require "urlConfig.php";//加载所需路径变量
+require_once "urlConfig.php";//加载所需路径变量
+require_once "autoLoader.php";//加载自动加载类函数
 
 if (!empty($_GET)) {//index.php后是否有参数,有则运行
 
     if (isset($_GET["c"])) {//获取controller参数
-        $controller = htmlspecialchars(strtolower($_GET["c"])) . "Ctrl";//加上Ctrl形成完整的类名,如："LoginAdmin" + "Ctrl" = "LoginAdminCtrl"
-        if (!file_exists(CTRL_PATH . "$controller.php")) {//文件是否存在
+        $controller = htmlspecialchars(strtolower($_GET["c"])) . "Ctrl"; //加上Ctrl形成完整的类名,如："LoginAdmin" + "Ctrl" = "LoginAdminCtrl"
+
+        if (!isClassExits($controller)) {//类是否存在
             die();//不存在停止运行脚本
         }
 
-        require_once CTRL_PATH . "$controller.php";//存在即载入文件
         $platform = new $controller();//实例化控制类
 
         if (isset($_GET["a"])) {//取特殊应用功能执行，如delete,add等
@@ -37,11 +33,6 @@ if (!empty($_GET)) {//index.php后是否有参数,有则运行
 
 } else {//没有默认输出登陆界面（后台管理要什么轮播图首页 =_= ）
 
-    if (!file_exists(CTRL_PATH . "LoginAdminCtrl.php")) {//登陆文件是否存在
-        die();//不存在停止运行脚本
-    }
-
-    require_once CTRL_PATH . "LoginAdminCtrl.php";//载入登陆控制类
     $from = new LoginAdminCtrl();//实例化登陆控制类
     $from->exec();//运行并展示登陆页面
 }

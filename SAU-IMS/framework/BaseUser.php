@@ -7,9 +7,7 @@
  * Time: 12:15
  */
 
-defined("APP") or die("傻了吧我的弟...");
-
-require_once "./framework/Database.php";
+defined("APP") or die("error");
 
 abstract class BaseUser
 {

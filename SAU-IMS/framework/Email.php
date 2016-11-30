@@ -7,9 +7,9 @@
  * Date: 2016/11/19
  * Time: 17:20
  */
-defined("APP") or die("傻了吧我的弟...");
+defined("APP") or die("error");
 
-require_once FRAME_PATH."PHPMailer/PHPMailerAutoload.php";
+require_once FRAME_PATH."PHPMailer/PHPMailerAutoload.php";//由于不是自己写的类，所以不打算用类自动加载器，直接使用路径，方便认识
 
 class Email
 {

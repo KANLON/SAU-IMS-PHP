@@ -7,7 +7,7 @@
  * Date: 2016/11/8
  * Time: 22:27
  */
-defined("APP") or die("傻了吧我的弟...");
+defined("APP") or die("error");
 
 class PINCode
 {

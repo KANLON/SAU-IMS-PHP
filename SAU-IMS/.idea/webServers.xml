@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="95b28a89-7e51-4cd7-baac-f1e6285ef96d" name="phpXY" url="http://localhost/SAU-IMS">
+        <fileTransfer port="0" mountedRoot="C:\xampp\htdocs\SAU-IMS" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>

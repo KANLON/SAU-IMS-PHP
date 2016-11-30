@@ -8,7 +8,8 @@
  * Time: 0:54
  */
 
-defined("APP") or die("傻了吧我的弟...");
+defined("APP") or die("error");
+
 class GeneralUser extends BaseUser
 {
 

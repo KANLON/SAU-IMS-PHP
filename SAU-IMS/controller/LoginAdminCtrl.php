@@ -7,14 +7,12 @@
  * Date: 2016/10/29
  * Time: 11:07
  */
-defined("APP") or die("傻了吧我的弟...");
+defined("APP") or die("error");
 
 class LoginAdminCtrl
 {
     public function exec()
     {
-        require_once FRAME_PATH."ModelFactory.php";
-
         if (!empty($_POST)) {//是否有post
 
             $userName = isset($_POST['userName']) ? htmlspecialchars(trim($_POST['userName'], " ")) : "";//获得用户信息
@@ -53,7 +51,7 @@ class LoginAdminCtrl
             die (json_encode($login));//抛出json
         }
 
-        require "./view/login/index.html";//无post默认加载登陆页面
+        require VIEW_PATH."login/index.html";//无post默认加载登陆页面
     }
 }
 
