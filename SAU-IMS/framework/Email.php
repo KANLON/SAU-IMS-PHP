@@ -9,8 +9,6 @@
  */
 defined("APP") or die("error");
 
-require_once FRAME_PATH."PHPMailer/PHPMailerAutoload.php";//由于不是自己写的类，所以不打算用类自动加载器，直接使用路径，方便认识
-
 class Email
 {
     /**

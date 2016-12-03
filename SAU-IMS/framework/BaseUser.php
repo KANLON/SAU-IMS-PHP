@@ -34,13 +34,13 @@ abstract class BaseUser
     public function __construct($userName = "")
     {
         $this->userName = $userName;
+        $this->getIdentify();//识别用户，无论是否调用checkAccount方法或该用户是否存在
     }
 
     /**
      *获取用户标识，包括用户id,以及用户所在的组织
-     * @return int 权限
      */
-    public function getIdentify()
+    private function getIdentify()
     {
         $sql = "select `id`,`club_id` from `user` where `username`=?";
         $conn = Database::getInstance();//获取接口
@@ -48,8 +48,9 @@ abstract class BaseUser
 
         $stmt->bindParam(1, $this->userName);//绑定参数
         $stmt->execute();
-
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        $info = $stmt->fetch(PDO::FETCH_ASSOC);//获取用户信息
+        $this->id = isset($info["id"]) ? $info["id"] : 0;
+        $this->clubId = isset($info["club_id"]) ? $info["club_id"] : 0;
     }
 
     /**
@@ -193,37 +194,6 @@ abstract class BaseUser
     }
 
     /**
-     * 注册
-     * @param $content array 用户注册信息
-     * @return bool 是否注册成功
-     */
-    abstract public function register($content);
-
-    /**
-     * 显示信息
-     * @param $usreName string 用户名
-     * @return mixed 用户信息
-     */
-    abstract public function showInfo($usreName);
-
-    /**
-     * 编辑信息
-     * @param $userName string 用户名
-     * @param $content array or string 内容
-     * @return bool 是否修改成功
-     */
-    abstract public function editInfo($userName, $content);
-
-    /**
-     * 获取类名
-     * @return mixed 类名
-     */
-    public function getName()
-    {
-        return "BaseUser";
-    }
-
-    /**
      * 设置用户名
      * @param $userName string 用户名
      */
@@ -238,7 +208,7 @@ abstract class BaseUser
      */
     public function getUserName()
     {
-        return $this->userName;
+        return isset($this->userName) ? $this->userName : "";
     }
 
     /**
@@ -251,12 +221,12 @@ abstract class BaseUser
     }
 
     /**
-     * 获取用户id
+     * 获取用户id(默认0)
      * @return int
      */
     public function getId()
     {
-        return $this->id;
+        return isset($this->id) ? $this->id : 0;
     }
 
     /**
@@ -265,7 +235,7 @@ abstract class BaseUser
      */
     public function setClubId($clubId)
     {
-        $this->clubId=$clubId;
+        $this->clubId = $clubId;
     }
 
     /**获取用户组织标识
@@ -273,7 +243,7 @@ abstract class BaseUser
      */
     public function getClubId()
     {
-        return $this->clubId;
+        return isset($this->clubId) ? $this->clubId : 0;
     }
 }
 
