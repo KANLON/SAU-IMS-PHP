@@ -9,7 +9,7 @@
  */
 defined("APP") or die("error");
 
-class ResetPassCtrl
+class ResetUserPassCtrl
 {
     /**
      * 默认执行函数，这里加载页面

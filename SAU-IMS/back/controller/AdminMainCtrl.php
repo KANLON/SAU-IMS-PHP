@@ -15,13 +15,22 @@ defined("APP") or die("error");
 class AdminMainCtrl
 {
 
+    /**
+     * 用户
+     * @var mixed
+     */
     private $user;
 
     public function __construct()
     {
-        session_start();//打开session
-        $userName = $_SESSION['userName'];//获取管理员用户名
-        $this->user = ModelFactory::adminFactory($userName);//识别和创建管理员model类对象
+        session_start();                                        //打开session
+        $userName = $_SESSION['userName'];                      //获取管理员用户名
+        try {
+            $this->user = ModelFactory::adminFactory($userName);//识别和创建管理员model类对象
+        } catch (ClassNotFoundException $e) {
+            header("Location:./index.php?c=LoginAdmin");        //如果用户未登录而又想靠地址进入，则阻挡且跳到登页面
+            die();
+        }
     }
 
     /**
@@ -29,7 +38,7 @@ class AdminMainCtrl
      */
     public function exec()
     {
-        require_once VIEW_PATH . "admin/index.html";//加载管理界面
+        require_once VIEW_PATH . "admin/index.html";            //加载管理界面
     }
 
     /**
@@ -55,8 +64,8 @@ class AdminMainCtrl
     {
         if (isset($_POST['noticeIds']) && !empty($_POST['noticeIds'])) {//判断要删除的公告id是否传过来了
             $nid = json_decode($_POST['noticeIds'], true);//json转为php对象(stdClass)
-            $sussess = $this->user->deleteNotice($nid);//根据id删除公告，成功返回true失败返回false
-            echo json_encode($sussess);
+            $success = $this->user->deleteNotice($nid);//根据id删除公告，成功返回true失败返回false
+            echo json_encode($success);
         } else {
             echo json_encode(false);
         }

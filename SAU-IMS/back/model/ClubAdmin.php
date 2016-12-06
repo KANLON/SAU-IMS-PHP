@@ -11,4 +11,13 @@ defined("APP") or die("error");
 
 class ClubAdmin extends BaseUser
 {
+    /**
+     * 构造函数
+     * ClubAdmin constructor.
+     * @param string $userName 用户名
+     */
+    public function __construct($userName)
+    {
+        parent::__construct($userName);
+    }
 }

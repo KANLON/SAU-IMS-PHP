@@ -203,6 +203,16 @@ abstract class BaseUser
     }
 
     /**
+     * 是否是管理员
+     * @return bool
+     */
+    public function isAdmin()
+    {
+        $right = $this->getRight();
+        return ($right == BaseUser::CLUB_ADMIN || $right == BaseUser::SAU_ADMIN) ? true : false;
+    }
+
+    /**
      *通过邮箱获取用户名
      * @param $email string 邮箱
      * @return string 用户名

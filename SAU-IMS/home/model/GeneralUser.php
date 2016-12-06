@@ -15,7 +15,7 @@ class GeneralUser extends BaseUser
     /**
      * 构造函数
      * GeneralUser constructor.
-     * @param string $userName
+     * @param string $userName 用户名
      */
     public function __construct($userName)
     {

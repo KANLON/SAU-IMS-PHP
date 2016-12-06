@@ -9,8 +9,8 @@
 
 define("APP", "SAU-IMS");//防止网址直接跳转,所有php和html必须存在
 
-require_once "../urlConfig.php";//加载所需路径变量
-require_once "../autoLoader.php";//加载自动加载类函数
+require_once "../urlConfig.php";        //加载所需路径变量
+require_once "../autoLoader.php";       //加载自动加载类函数
 
 if (!empty($_GET)) {//index.php后是否有参数,有则运行
 

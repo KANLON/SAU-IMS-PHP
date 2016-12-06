@@ -7,7 +7,9 @@
  * Date: 2016/12/6
  * Time: 16:14
  */
-class EditPassCtrl
+defined("APP") or die("error");
+
+class EditUserPassCtrl
 {
 
 }

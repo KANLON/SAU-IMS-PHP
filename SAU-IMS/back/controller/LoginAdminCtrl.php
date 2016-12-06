@@ -31,7 +31,7 @@ class LoginAdminCtrl
 
                     if ($admin->checkAccount($password)) {//账号是否正确
                         session_start();//保存用户文件
-                        $_SESSION["id"] = $admin->getId();//将信息存入session
+                        $_SESSION["right"] = $admin->getRight();//将信息存入session
                         $_SESSION["club_id"] = $admin->getClubId();
                         $_SESSION["userName"] = $admin->getUserName();
 
@@ -50,7 +50,7 @@ class LoginAdminCtrl
             die (json_encode($login));//抛出json
         }
 
-        require VIEW_PATH."login/index.html";//无post默认加载登陆页面
+        require VIEW_PATH . "login/index.html";//无post默认加载登陆页面
     }
 }
 
@@ -59,7 +59,6 @@ class LoginAdminCtrl
  * Class login
  * 用作json传数据用
  */
-
 class Json
 {
     /**

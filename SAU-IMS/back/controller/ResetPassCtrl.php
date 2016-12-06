@@ -21,9 +21,11 @@ class ResetPassCtrl
             $hash = isset($_GET["h"]) ? htmlspecialchars(trim($_GET["h"], " ")) : "";//获得hash
             $sessionId = isset($_GET["sid"]) ? htmlspecialchars(trim($_GET["sid"], " ")) : "";//获得hash
 
+            if(empty($time) || empty($hash) || empty($sessionId)){
+                die("链接已作废");
+            }
             session_id($sessionId);
             session_start();//打开session
-
             date_default_timezone_set("PRC");//设置时区
             if ($hash != $_SESSION["hash"]) {//检测链接合法性
                 session_destroy();
@@ -58,9 +60,15 @@ class ResetPassCtrl
                 die(json_encode($resetPassword));
             }
 
-            session_start();//打开session
-            $userName = $_SESSION["userName"];
-            $user = new GeneralUser($userName);
+            try {
+                session_start();//打开session
+                $userName = $_SESSION["userName"];
+                $user = ModelFactory::adminFactory($userName);//实例化普通用户类
+            } catch (ClassNotFoundException $e) {
+                $resetPassword->message = "用户名不存在";
+                die(json_encode($resetPassword));
+            }
+
             $resetPassword->success = $user->createPassword(md5(md5($password)));
             if ($resetPassword->success) {
                 $resetPassword->url = "?c=ResetPass&a=resetSuccess";
@@ -70,6 +78,9 @@ class ResetPassCtrl
         }
     }
 
+    /**
+     * 加载重置密码成功页面
+     */
     public function resetSuccess()
     {
         require_once VIEW_PATH . "forgetPassword/haveSet.html";

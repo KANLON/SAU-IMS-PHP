@@ -9,34 +9,34 @@ function login() {//登录，post函数
   }
 
   if (window.XMLHttpRequest) {
-      xmlhttp = new XMLHttpRequest();
+    xmlhttp = new XMLHttpRequest();
   } else {
-      xmlhttp = new ActiveXObject();
+    xmlhttp = new ActiveXObject();
   }
 
   xmlhttp.onreadystatechange = function () {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
       var json = xmlhttp.responseText;
-      var login = eval("("+json+")");
-      if(login.success){
+      var login = eval("(" + json + ")");
+      if (login.success) {
         checked();
-        location.href=login.url;
-      }else{
-        password.value="";
-        document.getElementById("tips").innerHTML=login.message;
+        window.location.href = login.url;
+      } else {
+        password.value = "";
+        document.getElementById("tips").innerHTML = login.message;
       }
     }
   }
-  xmlhttp.open("POST", "./index.php?c=LoginAdmin&t="+Math.random(), true);
+  xmlhttp.open("POST", "./index.php?c=LoginAdmin&t=" + Math.random(), true);
   xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xmlhttp.send("userName=" + userName.value + "&password=" + password.value);
 }
 
-document.getElementById("button").onclick=login;//按键登录
+document.getElementById("button").onclick = login;//按键登录
 
 function pressLogin(e) {//键盘登录
-  $(this).keydown(function (e){
-    if(e.which == "13") {
+  $(this).keydown(function (e) {
+    if (e.which == "13") {
       login();
     }
   })
@@ -55,7 +55,7 @@ function getCookie(cname) {
   for (var i = 0; i < ca.length; i++) {
     var c = ca[i].trim();
     if (c.indexOf(name) == 0)
-    return c.substring(name.length, c.length);
+      return c.substring(name.length, c.length);
   }
   return "";
 }
@@ -78,7 +78,7 @@ function addLoadEvent(func) {//dom树加载完时加载
   if (typeof window.onload != 'function') {
     window.onload = func;
   } else {
-    window.onload = function() {
+    window.onload = function () {
       oldonload();
       func();
     }

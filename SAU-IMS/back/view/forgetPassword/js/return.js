@@ -14,5 +14,16 @@ function autoReturn() {
     sec--;
 }
 
+document.getElementById("button").onclick=returnLogin;
+document.onkeydown = function (e) {
+  if (e.which == "13") {
+    returnLogin();
+  }
+};
+
 var sec = 3;
 var interval = setInterval("autoReturn()", 1000);
+
+
+
+
