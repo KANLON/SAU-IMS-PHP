@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `sauims` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `sauims`;
 -- MySQL dump 10.13  Distrib 5.7.12, for Win64 (x86_64)
 --
 -- Host: localhost    Database: sauims
@@ -18,31 +16,29 @@ USE `sauims`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `club_register`
+-- Table structure for table `user_notice`
 --
 
-DROP TABLE IF EXISTS `club_register`;
+DROP TABLE IF EXISTS `user_notice`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `club_register` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `url` varchar(60) NOT NULL,
-  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `state` tinyint(4) NOT NULL DEFAULT '0',
-  `admin_id` int(11) NOT NULL,
-  `respond` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `url` (`url`)
+CREATE TABLE `user_notice` (
+  `user_id` int(11) NOT NULL,
+  `notice_id` int(11) NOT NULL,
+  `delete` tinyint(4) NOT NULL DEFAULT '0',
+  `read` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`user_id`,`notice_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `club_register`
+-- Dumping data for table `user_notice`
 --
 
-LOCK TABLES `club_register` WRITE;
-/*!40000 ALTER TABLE `club_register` DISABLE KEYS */;
-/*!40000 ALTER TABLE `club_register` ENABLE KEYS */;
+LOCK TABLES `user_notice` WRITE;
+/*!40000 ALTER TABLE `user_notice` DISABLE KEYS */;
+INSERT INTO `user_notice` VALUES (1,3,1,0),(1,4,1,1),(1,29,0,0),(1,30,0,0),(1,31,0,0),(1,32,0,0),(1,33,0,0),(1,34,0,0),(1,35,0,0),(2,29,0,0),(2,30,0,0),(2,31,0,0),(2,32,0,0),(2,33,0,0),(2,34,0,0),(2,35,0,0);
+/*!40000 ALTER TABLE `user_notice` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -54,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-23 13:52:19
+-- Dump completed on 2016-12-06 18:26:03

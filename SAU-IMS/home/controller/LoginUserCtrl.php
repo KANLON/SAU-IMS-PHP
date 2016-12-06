@@ -7,6 +7,8 @@
  * Date: 2016/12/3
  * Time: 1:01
  */
+defined("APP") or die("error");
+
 class LoginUserCtrl
 {
     public function exec()

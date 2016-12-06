@@ -18,7 +18,7 @@ class LoginAdminCtrl
             $userName = isset($_POST['userName']) ? htmlspecialchars(trim($_POST['userName'], " ")) : "";//获得用户信息
             $password = isset($_POST['password']) ? htmlspecialchars(trim($_POST['password'], " ")) : "";
 
-            $login = new login();//实例化消息对象
+            $login = new Json();//实例化消息对象
 
             if (empty($userName) || empty($password)) {//用户名和密码是否为空
                 $login->message = "用户或密码不能为空";
@@ -60,7 +60,7 @@ class LoginAdminCtrl
  * 用作json传数据用
  */
 
-class login
+class Json
 {
     /**
      * @var string 登陆是否成功

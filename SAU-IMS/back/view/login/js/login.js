@@ -27,7 +27,7 @@ function login() {//登录，post函数
       }
     }
   }
-  xmlhttp.open("POST", "./index.php?c=LoginAdmin", true);
+  xmlhttp.open("POST", "./index.php?c=LoginAdmin&t="+Math.random(), true);
   xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xmlhttp.send("userName=" + userName.value + "&password=" + password.value);
 }
@@ -62,7 +62,7 @@ function getCookie(cname) {
 
 function checked() {
   var user = getCookie("username");
-  if ($('#checkbox').is(':checked')) {
+  if ($("#checkbox").is(':checked')) {
     user = $("#user").val();
     setCookie("username", user, 365);
   }

@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `sauims` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `sauims`;
 -- MySQL dump 10.13  Distrib 5.7.12, for Win64 (x86_64)
 --
 -- Host: localhost    Database: sauims
@@ -18,32 +16,31 @@ USE `sauims`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `user`
+-- Table structure for table `year_check`
 --
 
-DROP TABLE IF EXISTS `user`;
+DROP TABLE IF EXISTS `year_check`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `user` (
+CREATE TABLE `year_check` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `username` varchar(20) NOT NULL,
-  `password` varchar(32) NOT NULL,
-  `right` int(11) NOT NULL DEFAULT '0',
-  `club_id` int(11) NOT NULL DEFAULT '0',
-  `salt` varchar(32) NOT NULL,
+  `url` varchar(60) NOT NULL,
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `state` tinyint(4) NOT NULL DEFAULT '0',
+  `admin_id` int(11) NOT NULL,
+  `respond` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  UNIQUE KEY `url` (`url`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user`
+-- Dumping data for table `year_check`
 --
 
-LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'151543211','cc8f822e6460450c56ab4e1cd149978e',2,1,'8726548ed0220bea647efb11d88ba1e2'),(2,'fb','be7ab3eab997586ed77619386aacc115',0,1,'c546dfb78280d2382503ea609ffd29e2');
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+LOCK TABLES `year_check` WRITE;
+/*!40000 ALTER TABLE `year_check` DISABLE KEYS */;
+/*!40000 ALTER TABLE `year_check` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -55,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-23 13:52:19
+-- Dump completed on 2016-12-06 18:26:04

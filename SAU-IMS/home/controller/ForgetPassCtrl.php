@@ -7,6 +7,8 @@
  * Date: 2016/12/3
  * Time: 1:05
  */
+defined("APP") or die("error");
+
 class ForgetPassCtrl
 {
     /**

@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `sauims` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `sauims`;
 -- MySQL dump 10.13  Distrib 5.7.12, for Win64 (x86_64)
 --
 -- Host: localhost    Database: sauims
@@ -18,30 +16,31 @@ USE `sauims`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `sau_notice`
+-- Table structure for table `club_register`
 --
 
-DROP TABLE IF EXISTS `sau_notice`;
+DROP TABLE IF EXISTS `club_register`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `sau_notice` (
+CREATE TABLE `club_register` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `text` text NOT NULL,
-  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `title` varchar(60) NOT NULL,
-  `right` int(11) NOT NULL DEFAULT '0',
-  `club_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `url` varchar(60) NOT NULL,
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `state` tinyint(4) NOT NULL DEFAULT '0',
+  `admin_id` int(11) NOT NULL,
+  `respond` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `url` (`url`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `sau_notice`
+-- Dumping data for table `club_register`
 --
 
-LOCK TABLES `sau_notice` WRITE;
-/*!40000 ALTER TABLE `sau_notice` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sau_notice` ENABLE KEYS */;
+LOCK TABLES `club_register` WRITE;
+/*!40000 ALTER TABLE `club_register` DISABLE KEYS */;
+/*!40000 ALTER TABLE `club_register` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-23 13:52:18
+-- Dump completed on 2016-12-06 18:26:04

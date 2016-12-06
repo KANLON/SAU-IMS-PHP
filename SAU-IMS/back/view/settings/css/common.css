@@ -70,17 +70,22 @@ header{
 	right: 300px;
 }
 
+#showSettings {
+	display: inline;
+	cursor: pointer;
+}
+
 .userImg {
 	top: 15px;
-	right: 180px;
+	right: 160px;
 }
 
 .downArrow {
 	top: 35px;
-	right: 100px;
+	right: 80px;
 }
 
-.menuContainer {
+#menuContainer {
 	top: 60px;
 	right: 60px;
 	position: absolute;
@@ -93,26 +98,28 @@ header{
 	border-left: 8px solid transparent;
 	border-right: 8px solid transparent;
 	border-bottom: 10px solid rgba(255, 255, 255, 0.8);
-	top: 2px;
+	top: 7px;
+	left: 20px;
 	z-index: 2;
 }
 
 .menu {
 	height: 172px;
-	width: 139px;
-	top: 10px;
+	width: 114px;
+	top: 15px;
 	right: 25px;
 	background-color: rgba(255, 255, 255, 0.8);
 	font-size: 1.8em;
 	padding: 20px 0;
 	border: 2px solid rgba(0, 0, 51, 0.44);
 	border-radius: 15px;
+	margin-left: 25px;
 }
 
 .menulist {
-	padding-left: 20px;
 	padding-top: 10px;
 	padding-bottom: 10px;
+	padding-left: 20px;
 }
 
 .menulist:hover {

@@ -12,6 +12,26 @@ defined("APP") or die("error");
 abstract class BaseUser
 {
     /**
+     * 校社联管理员
+     */
+    const SAU_ADMIN = 2;
+
+    /**
+     * 社团管理员
+     */
+    const CLUB_ADMIN = 1;
+
+    /**
+     * 普通用户
+     */
+    const GENERAL_USER = 0;
+
+    /**
+     * 为确认新注册用户
+     */
+    const NOAPPLY_USER = -1;
+
+    /**
      * @var string 用户名
      */
     private $userName;
@@ -27,11 +47,16 @@ abstract class BaseUser
     private $clubId;
 
     /**
+     * @var int 权限标识
+     */
+    private $right;
+
+    /**
      * 构造函数
      * BaseUser constructor.
      * @param $userName string 用户名
      */
-    public function __construct($userName = "")
+    public function __construct($userName)
     {
         $this->userName = $userName;
         $this->getIdentify();//识别用户，无论是否调用checkAccount方法或该用户是否存在
@@ -42,7 +67,7 @@ abstract class BaseUser
      */
     private function getIdentify()
     {
-        $sql = "select `id`,`club_id` from `user` where `username`=?";
+        $sql = "select `id`,`club_id`,`right` from `user` where `username`=?";
         $conn = Database::getInstance();//获取接口
         $stmt = $conn->prepare($sql);
 
@@ -51,6 +76,7 @@ abstract class BaseUser
         $info = $stmt->fetch(PDO::FETCH_ASSOC);//获取用户信息
         $this->id = isset($info["id"]) ? $info["id"] : 0;
         $this->clubId = isset($info["club_id"]) ? $info["club_id"] : 0;
+        $this->right = isset($info["right"]) ? $info["right"] : -1;
     }
 
     /**
@@ -149,7 +175,7 @@ abstract class BaseUser
      */
     public function getEmail()
     {
-        $sql = "select `email` from `userInfo` where `username`=?";
+        $sql = "select `email` from `user` where `username`=?";
         $conn = Database::getInstance();
         $stmt = $conn->prepare($sql);
 
@@ -238,12 +264,46 @@ abstract class BaseUser
         $this->clubId = $clubId;
     }
 
-    /**获取用户组织标识
+    /**
+     * 获取用户组织标识
      * @return int
      */
     public function getClubId()
     {
         return isset($this->clubId) ? $this->clubId : 0;
+    }
+
+    /**
+     * 设置用户权限,不要随便调用
+     * @param $right int 权限
+     * @return bool 是否修改成功
+     */
+    public function setRight($right)
+    {
+        if ($right < -1 || $right > 2 || empty($right)) {
+            $this->right = 0;
+        } else {
+            $this->right = $right;
+        }
+
+        $sql = "update `user` set `right`=? where `username`=?";
+        $conn = Database::getInstance();
+        $stmt = $conn->prepare($sql);
+
+        $stmt->bindParam(1, $this->right);
+        $stmt->bindParam(2, $this->userName);
+        $stmt->execute();
+
+        return $stmt->rowCount() > 0 ? true : false;
+    }
+
+    /**
+     * 获取用户权限
+     * @return int
+     */
+    public function getRight()
+    {
+        return isset($this->right) ? $this->right : -1;
     }
 }
 
