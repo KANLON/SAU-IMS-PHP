@@ -36,7 +36,7 @@ class LoginUserCtrl
                         $_SESSION["userName"] = $user->getUserName();
 
                         $login->success = true;//登陆成功
-                        $login->url = "?c=";//转到管理界面
+                        $login->url = "?c=UserMain";//转到管理界面
 
                     } else {//密码错误
                         $login->message = "用户名或密码错误";
@@ -50,7 +50,7 @@ class LoginUserCtrl
             die (json_encode($login));//抛出json
         }
 
-        require VIEW_PATH."";//无post默认加载登陆页面
+        require VIEW_PATH."login/index.html";//无post默认加载登陆页面
     }
 }
 

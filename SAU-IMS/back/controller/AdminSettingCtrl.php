@@ -17,6 +17,10 @@ class AdminSettingCtrl
      */
     private $user;
 
+    /**
+     * 构造函数
+     * AdminSettingCtrl constructor.
+     */
     public function __construct()
     {
         session_start();                                        //打开session
@@ -36,4 +40,31 @@ class AdminSettingCtrl
     {
         require_once VIEW_PATH . "settings/index.html";            //加载管理界面
     }
+
+    /**
+     * 上传头像
+     */
+    public function uploadPortrait(){
+
+    }
+}
+
+
+/**
+ * 修改信息json类
+ * Class JsonAS
+ */
+class JsonAS{
+
+    /**
+     * 是否设置成功
+     * @var bool
+     */
+    public $success=false;
+
+    /**
+     * 错误信息
+     * @var string
+     */
+    public $message="";
 }

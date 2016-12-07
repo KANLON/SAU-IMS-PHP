@@ -7,5 +7,4 @@
  * Time: 16:05
  */
 
-header("Location:./back/index.php");//默认进入前台的入口
-//也许以后会有轮播图。。。。
+header("Location:./back/index.php");//默认进入后台入口

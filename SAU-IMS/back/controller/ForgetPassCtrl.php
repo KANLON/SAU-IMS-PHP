@@ -22,15 +22,12 @@ class ForgetPassCtrl
 
             if (empty($userName)) {//账号不能为空
                 $forgetPassword->message = "账号不能为空";
-            } else {
-                try {
-                    $user = ModelFactory::adminFactory($userName);//实例化普通用户类
-                } catch (ClassNotFoundException $e) {
-                    $forgetPassword->message = "用户名不存在";
-                    die(json_encode($forgetPassword));
-                }
 
-                if (!$user->isExits()) {//输入的用户是否存在
+            } else {
+
+                try {
+                    $user = ModelFactory::adminFactory($userName);//实例化管理员类
+                } catch (ClassNotFoundException $e) {
                     $forgetPassword->message = "用户名不存在";
                     die(json_encode($forgetPassword));
                 }

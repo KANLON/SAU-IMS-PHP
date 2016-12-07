@@ -52,6 +52,16 @@ class LoginAdminCtrl
 
         require VIEW_PATH . "login/index.html";//无post默认加载登陆页面
     }
+
+    /**
+     * 登出
+     */
+    public function logout(){
+        session_start();
+        session_destroy();
+        header("Location:./index.php?c=LoginAdmin");//跳到登录页面
+        die();
+    }
 }
 
 
