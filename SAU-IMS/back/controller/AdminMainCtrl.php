@@ -20,11 +20,15 @@ class AdminMainCtrl
         if (empty($_SESSION["userName"])) {
             header("Location:./index.php");
         }
-
-        $userName = $_SESSION['userName'];
-        $this->user = ModelFactory::adminFactory($userName);//创建管理员model类对象
-        $this->noticeManage = $this->user->getNoticeManage();//公告管理对象
-
+        
+        try {
+            $userName = $_SESSION['userName'];
+            $this->user = ModelFactory::adminFactory($userName);//识别和创建管理员model类对象
+            $this->noticeManage = $this->user->getNoticeManage();//公告管理对象
+        } catch (ClassNotFoundException $e) {
+            header("Location:./index.php?c=LoginAdmin");        //如果用户未登录而又想靠地址进入，则阻挡且跳到登页面
+            die();
+        }
     }
 
     public function exec()//默认功能实现

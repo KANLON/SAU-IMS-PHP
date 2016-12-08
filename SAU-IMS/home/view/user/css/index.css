@@ -14,7 +14,7 @@ body{
     overflow-x: auto;
     margin: 0 0 4px 0;
     background: rgba(139, 228, 232,1);
-} 
+}
 .container {
   width:95%;
   margin: 0 auto;
@@ -22,7 +22,7 @@ body{
 .today , .three , .week {
   width: 100%;
   margin: 30px auto;
-  padding: 25px 0; 
+  padding: 25px 0;
   background-color: rgba(255, 255, 255, 1);
 }
 .period{
@@ -34,7 +34,7 @@ body{
   margin: 10px auto;
   list-style: none;
   position: relative;
-  background: rgba(183,183,183,1);  
+  background: rgba(183,183,183,1);
 }
 .dynamicImg{
   width: 17%;
@@ -58,7 +58,7 @@ body{
 }
 .infor{
   width: 16%;
-  float:right;  
+  float:right;
   color: rgba(52,52,52,1);
 }
 .time{
@@ -67,7 +67,7 @@ body{
   right: -45px;
   top: 10px;
 }
-.sender{  
+.sender{
   font-size: 3em;
   position: relative;
   right: 5px;
@@ -91,22 +91,23 @@ footer {
   text-align: center;
 }
 .blo{
-  width: 100%;
+  width: 30%;
+  margin: 15px auto 0;
   display: block;
 }
 .des{
-  font-size: 45px;
+  font-size: 30px;
 }
 .token{
   width: 80%;
-  height: 25px;
+  height: 20px;
   margin: 0 auto;
   position: relative;
   background-color:rgba(139, 228, 232,1);
 }
 .untoken{
   width: 80%;
-  height: 25px;
+  height: 20px;
   margin: 0 auto;
   position: relative;
   background-color: inherit;
@@ -132,4 +133,3 @@ footer {
   margin-top: 55px;
   margin-right: 30px;
 }
-

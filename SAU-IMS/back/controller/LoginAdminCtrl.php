@@ -13,6 +13,11 @@ class LoginAdminCtrl
 {
     public function exec()
     {
+        if (!empty($_SESSION["userName"])) {
+            header("Location:./index.php?c=AdminMain");
+            die("dsd");
+        }
+
         if (!empty($_POST)) {//是否有post
 
             $userName = isset($_POST['userName']) ? htmlspecialchars(trim($_POST['userName'], " ")) : "";//获得用户信息

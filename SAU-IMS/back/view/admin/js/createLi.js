@@ -2,12 +2,11 @@ $(function () {
   var limit = '{"l":"0","r":"10"}';
   var srcOfHead = "./view/admin/img/头像logo.png";
   var sender = "校社联";
-  var address = "各位社长、成员、同学们：";
   //生成
   $.post("./index.php?c=AdminMain&a=refresh", {"limit": limit}, function (data) {
     eval("data =" + data);
     for (var i = 0; i < 10; i++) {
-      createList(data[i]['title'], data[i]['text'], data[i]['time'], data[i]['id']);
+      createList(data[i]['title'], data[i]['time'], data[i]['id']);
     }
     var firstId = data[0]['id'];
     var firstDom = document.getElementById(firstId);
@@ -15,7 +14,7 @@ $(function () {
     //生成正文内容
     $.post("./index.php?c=AdminMain&a=getNoticeById", {"nid": firstId}, function (data) {
       eval("data = " + data);
-      createRight(srcOfHead, data['name'], data['time'], data['title'], address, data['text'])
+      createRight(srcOfHead, data['name'], data['time'], data['title'], data['text'])
     })
   });
 
@@ -53,7 +52,7 @@ $(function () {
         eval("data =" + data);
         if (data.length > 0) {
           for (var i = 0; i < 10; i++) {
-            createList(data[i]['title'], " ", data[i]['time'], data[i]['id']);
+            createList(data[i]['title'], data[i]['time'], data[i]['id']);
           }
         }else{
           alert("没有更多公告");

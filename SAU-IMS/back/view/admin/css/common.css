@@ -79,7 +79,7 @@ header {
 
 /*主体部分*/
 .threeBars {
-	height: 746px;
+	height: 846px;
 	background-image: url(../img/background.png);
 }
 
@@ -146,10 +146,11 @@ footer {
 }
 #searchField {
 	width: 83%;
-	height: 48px;	/*border: none;*/
+	height: 54px;	/*border: none;*/
 	background-color: inherit;
 	border: 1px solid #6cf;
 	font-size: 2em;
+	padding-left: 5px;
 }
 ::-webkit-input-placeholder {
 
@@ -237,7 +238,7 @@ background-color: #f3f3f3;
 .content {
 	height: 80px;
 	width: 100%;
-	margin-bottom: 25px;
+	margin-bottom: 20px;
 	background-color: #fff;	/*border: 1px solid #aaa;*/
 	cursor: pointer;
 }
