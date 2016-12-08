@@ -89,8 +89,6 @@ function createRight(srcOfHead, sender, time, title, address, text) {
   var mainTitle = createEle("h3", "mainTitle");
   mainTitle.innerHTML = title;
   var mainContent = createEle("div", "mainContent");
-  //var towho = createEle("p", "toWho");//就是这里偷了一个大懒！！！
-  //towho.innerHTML = address;
   var ti2 = createEle("p");
   ti2.innerHTML = text.replace(/\s/g, "&nbsp;");
   addChilds(mainContent, ti2);
@@ -146,11 +144,19 @@ function search() {
       if (data != "false") {//之前这里是"false"。。。怪不得不会出现查询出错
         eval("data =" + data);
         if (data.length != 0) {
-
           var len = data.length;
           for (var i = 0; i < len; i++) {
             createList(data[i]['title'], data[i]['text'], data[i]['time'], data[i]['id']);
           }
+          var firstId = data[0]['id'];
+          var firstDom = document.getElementById(firstId);
+          checkedStyle(firstDom);
+          //生成正文内容
+          $.post("./index.php?c=AdminMain&a=getNoticeById", {"nid": firstId}, function(data) {
+            eval("data = " + data);
+            clearAll("rightBar");
+            createRight(srcOfHead, data['name'], data['time'], data['title'], data['id'],data['text']);
+          })
         } else {
           alert('查找不到与"' + val + '"有关的公告');
         }

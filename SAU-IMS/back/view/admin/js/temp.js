@@ -21,7 +21,7 @@
     var deleteButton = createEle("a", "deleteButton", "fll");
     deleteButton.href = "javascript:;"
     var mainDelete = createEle("img", "mainDelete");
-    mainDelete.src = "./view/admin/img/删除logo.png";
+    mainDelete.src = "./view/user/img/删除logo.png";
     mainDelete.alt = "删除";
     var deleteText = createEle("span", "deleteText", "rlt");
     deleteText.innerHTML = "删除";

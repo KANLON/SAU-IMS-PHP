@@ -40,21 +40,26 @@ $(function () {
     newNotice();
   });
 
-  // 滚轮事件
-  var boxxx = document.getElementById("listContainer");
-  boxxx.onscroll = function () {
+
+  var boxDom = document.getElementById("listContainer");
+  var boxJq = $("#listContainer");
+  boxJq.scroll(function () {//瀑布流问题很大啊
     var limitL = document.getElementById("announcementList").childNodes.length;
-    var limit = '{"l":"' + limitL + '","r":"10"}';
-    var scrollTop = boxxx.scrollTop;
-    var max = boxxx.scrollHeight - boxxx.offsetHeight;
+    limit = '{"l":"' + limitL + '","r":"10"}';
+    var scrollTop = boxDom.scrollTop - 2;
+    var max = boxDom.scrollHeight - boxDom.offsetHeight;
     if (scrollTop >= max) {
       $.post("./index.php?c=AdminMain&a=getSendNotices", {"limit": limit}, function (data) {
         eval("data =" + data);
-        for (var i = 0; i < 10; i++) {
-          createList(data[i]['title'], data[i]['text'], data[i]['time'], data[i]['id']);
+        if (data.length > 0) {
+          for (var i = 0; i < 10; i++) {
+            createList(data[i]['title'], " ", data[i]['time'], data[i]['id']);
+          }
+        }else{
+          alert("没有更多公告");
         }
       });
     }
-  }
+  })
 
 });

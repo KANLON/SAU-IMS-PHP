@@ -50,7 +50,7 @@ class LoginUserCtrl
             die (json_encode($login));//抛出json
         }
 
-        require VIEW_PATH."login/index.html";//无post默认加载登陆页面
+        require VIEW_PATH."login/login.html";//无post默认加载登陆页面
     }
 }
 
